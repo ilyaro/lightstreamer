@@ -63,7 +63,7 @@
     <http_server name="Lightstreamer HTTP Server">
 
         <!-- Mandatory. Listening TCP port. -->
-        <port>8080</port>
+        <port>80</port>
 
         <!-- Optional. Size of the system buffer for incoming TCP connections
              (backlog). Overrides the default system setting. -->
