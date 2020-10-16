@@ -6,7 +6,11 @@
 ## Standard name of lightstreamer container
 container_name="ls-server"
 date=`date`
-log_file="/logs/ls-docker.log"
+dirname="/logs"
+if [ ! -d "$newdirname" ]; then
+  mkdir -p $newdirname;
+fi
+log_file="${dirname}/ls-docker.log"
 echo "Log of $container_name of $date" > $log_file
 if [ "$( docker container inspect -f '{{.State.Running}}' $container_name )" == "true" ]; 
 then
