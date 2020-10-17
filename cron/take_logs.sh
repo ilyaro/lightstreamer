@@ -24,5 +24,5 @@ then
   ## Get process Memory and CPU
   top -b -n 1 -d 0.2 | grep  `docker top ls-server | grep lightstreamer | awk '{print $1}'` | grep lightstreamer | awk '{print "Process CPU: ",$8,"Proecss Memory: " $5}' >> $log_file
 else
-  echo Status: " $container_name "is not running" >> $log_file 
+  echo "Status: " $container_name "is not running" >> $log_file 
 fi
