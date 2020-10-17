@@ -11,6 +11,7 @@ if [ ! -d "$dirname" ]; then
   mkdir -p $dirname;
 fi
 log_file="${dirname}/ls-docker.log"
+echo "" >> $log_file
 echo "Log of $container_name of $date" >> $log_file
 printf '=%.0s' {1..100} >> $log_file
 echo "" >> $log_file
