@@ -6,9 +6,9 @@
 ## Standard name of lightstreamer container
 container_name="ls-server"
 date=`date`
-dirname="/logs"
-if [ ! -d "$newdirname" ]; then
-  mkdir -p $newdirname;
+dirname="/lightstreamer/logs"
+if [ ! -d "$dirname" ]; then
+  mkdir -p $dirname;
 fi
 log_file="${dirname}/ls-docker.log"
 echo "Log of $container_name of $date" > $log_file
