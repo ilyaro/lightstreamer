@@ -16,6 +16,7 @@ if [ "$( docker container inspect -f '{{.State.Running}}' $container_name )" == 
 then
   echo $date $container_name "is running" >> $log_file
   docker stats -a --no-stream >> $log_file
+  docker exec ls-server du -sh /lightstreamer/logs >> $log_file
 else
   echo $container_name "is not running" >> $log_file 
 fi
