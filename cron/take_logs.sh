@@ -6,7 +6,7 @@
 # Author: Ilya Rokhkin
 
 ## Standard name of lightstreamer container
-container_name="ls-server"
+container_name="ls-server2"
 date=`date`
 dirname="/lightstreamer/logs"
 if [ ! -d "$dirname" ]; then
@@ -24,8 +24,9 @@ then
   docker stats ls-server -a --no-stream | grep ls-server | awk '{print "Container CPU",$3,"Container Memory", $7}' >> $log_file
   ## LOgs size of lightstreamer
   echo -n "Logs size: " >> $log_file; docker exec ls-server du -sh /lightstreamer/logs >> $log_file
-  ## Get process Memory and CPU
-  top -b -n 1 -d 0.2 | grep  `docker top ls-server | grep lightstreamer | awk '{print $1}'` | grep lightstreamer | awk '{print "Process CPU: ",$8,"Proecss Memory: " $5}' >> $log_file
+  ## Get process Memory and CPU ToDo: $9 $10 CPU and Memory are diferent from system to sysyesm 
+  ## Need to do it by %CPU and %MEM fields
+  top -b -n 1 -d 0.2 | grep  `docker top $container_name | grep lightst | awk '{print $1}'` | grep lightst | awk '{print "Process CPU: ",$9,"Proecss Memory: " $10}' >> $log_file
 else
   echo "Status: " $container_name "is not running" >> $log_file 
 fi
