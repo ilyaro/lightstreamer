@@ -1,6 +1,7 @@
 #!/bin/bash
 # Desc: crontab script to get all logs from lightstreamer container
 # Need to be run in crontab each 1 minute
+# On docker host run crontab -e and add this line
 # 1       *       *       *       *       /lightstreamer/cron/take_logs.sh
 # Author: Ilya Rokhkin
 
