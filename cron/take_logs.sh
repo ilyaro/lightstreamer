@@ -2,7 +2,8 @@
 # Desc: crontab script to get all logs from lightstreamer container
 # Need to be run in crontab each 1 minute
 # On docker host run crontab -e and add this line
-# 1       *       *       *       *       /lightstreamer/cron/take_logs.sh
+#[ec2-user@ip-172-25-1-101 lightstreamer]$ crontab -l
+#1       *       *       *       *      /home/ec2-user/lightstreamer/cron/take_logs.sh
 # Author: Ilya Rokhkin
 
 ## Standard name of lightstreamer container
@@ -26,7 +27,7 @@ then
   echo -n "Logs size: " >> $log_file; docker exec ls-server du -sh /lightstreamer/logs >> $log_file
   ## Get process Memory and CPU ToDo: $9 $10 CPU and Memory are diferent from system to sysyesm 
   ## Need to do it by %CPU and %MEM fields
-  top -b -n 1 -d 0.2 | grep  `docker top $container_name | grep lightst | awk '{print $1}'` | grep lightst | awk '{print "Process CPU: ",$9,"Proecss Memory: " $10}' >> $log_file
+  top -b -n 1 -d 0.2 | grep  `docker top $container_name | grep lightst | awk '{print $1}'` | grep lightst | awk '{print "Process CPU: ",$9"%"," Proecss Memory: " $10"%"}' >> $log_file
 else
   echo "Status: " $container_name "is not running" >> $log_file 
 fi
