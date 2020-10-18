@@ -5,4 +5,3 @@ FROM lightstreamer
 ##COPY conf/lightstreamer_conf.xml /lightstreamer/conf/lightstreamer_conf.xml
 USER lightstreamer
 VOLUME '[/ligitstreamer/logs:/ligitstreamer/logs]'
-RUN chown lightstreamer:lightstreamer /ligitstreamer/logs
